@@ -1,7 +1,6 @@
+const config = require('./.contentful.json');
+
 module.exports = {
-  /*
-  ** Headers of the page
-  */
   head: {
     title: 'alad',
     meta: [
@@ -16,24 +15,24 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#fff' },
+  /*
+  ** Global CSS
+  */
+  css: [
+    '@/assets/scss/app.scss'
+  ],
   /*
   ** Build configuration
   */
   build: {
-    /*
-    ** Run ESLint on save
-    */
-    extend (config, { isDev, isClient }) {
-      if (isDev && isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    }
+  },
+  /*
+  ** Environment variables
+  */
+  env: {
+    CTF_SPACE_ID: config.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
   }
 }
 
