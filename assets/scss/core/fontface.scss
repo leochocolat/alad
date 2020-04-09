@@ -1,0 +1,54 @@
+@mixin font-face($font-family, $weight, $url) {
+	@font-face {
+		font-family: '#{$font-family}';
+		src: url('/fonts/#{$url}.eot');
+        src: url('/fonts/#{$url}.eot?#iefix') format('embedded-opentype'),
+             url('/fonts/#{$url}.woff2') format('woff2'),
+		     url('/fonts/#{$url}.woff') format('woff'),
+		     url('/fonts/#{$url}.ttf') format('truetype'),
+		     url('/fonts/#{$url}.svg') format('svg');
+		font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        font-weight: $weight;
+        -webkit-font-smoothing: antialiased
+	}
+}
+
+@include font-face('lausanne', 'normal', 'lausanne/subset-Lausanne-Regular');
+
+@include font-face('GlyphWorld AirLand', 'normal', 'subset/subset-GlyphWorld-AirLand');
+@include font-face('GlyphWorld WasteLand', 'normal', 'subset/subset-GlyphWorld-WasteLand');
+@include font-face('GlyphWorld Mountain', 'normal', 'subset/subset-GlyphWorld-Mountain');
+@include font-face('GlyphWorld Flower', 'normal', 'subset/subset-GlyphWorld-Flower');
+@include font-face('GlyphWorld Animal Soul', 'normal', 'subset/subset-GlyphWorld-AnimalSoul');
+@include font-face('GlyphWorld Forest', 'normal', 'subset/subset-GlyphWorld-Forest');
+@include font-face('GlyphWorld Desert', 'normal', 'subset/subset-GlyphWorld-Desert');
+@include font-face('GlyphWorld Glacier', 'normal', 'subset/subset-GlyphWorld-Glacier');
+@include font-face('GlyphWorld Meadow', 'normal', 'subset/subset-GlyphWorld-Meadow');
+
+$base-font-size: 16px;
+
+@function rem($px, $base: $base-font-size) {
+    @return ($px / $base) * 1rem;
+};
+
+$fonts: (
+    'GlyphWorld AirLand',
+    'GlyphWorld WasteLand',
+    'GlyphWorld Mountain',
+    'GlyphWorld Flower',
+    'GlyphWorld Animal',
+    'GlyphWorld Forest',
+    'GlyphWorld Desert',
+    'GlyphWorld Glacier',
+    'GlyphWorld Meadow',
+);
+
+@function get_font($index, $fonts: $fonts) {
+    @return nth($fonts, $index)
+};
+
+@function random_font($fonts: $fonts) {
+    @return nth($fonts, random(length($fonts)))
+};

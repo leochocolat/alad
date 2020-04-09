@@ -1,6 +1,6 @@
 <template>
   <section>
-    <SampleComponent :posts="posts" />
+    
   </section>
 </template>
 

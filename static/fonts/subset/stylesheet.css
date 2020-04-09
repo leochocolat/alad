@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'GlyphWorld AirLand';
+    src: url('subset-GlyphWorld-AirLand.eot');
+    src: url('subset-GlyphWorld-AirLand.eot?#iefix') format('embedded-opentype'),
+        url('subset-GlyphWorld-AirLand.woff2') format('woff2'),
+        url('subset-GlyphWorld-AirLand.woff') format('woff'),
+        url('subset-GlyphWorld-AirLand.ttf') format('truetype'),
+        url('subset-GlyphWorld-AirLand.svg#GlyphWorld-AirLand') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GlyphWorld WasteLand';
+    src: url('subset-GlyphWorld-WasteLand.eot');
+    src: url('subset-GlyphWorld-WasteLand.eot?#iefix') format('embedded-opentype'),
+        url('subset-GlyphWorld-WasteLand.woff2') format('woff2'),
+        url('subset-GlyphWorld-WasteLand.woff') format('woff'),
+        url('subset-GlyphWorld-WasteLand.ttf') format('truetype'),
+        url('subset-GlyphWorld-WasteLand.svg#GlyphWorld-WasteLand') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GlyphWorld Mountain';
+    src: url('subset-GlyphWorld-Mountain.eot');
+    src: url('subset-GlyphWorld-Mountain.eot?#iefix') format('embedded-opentype'),
+        url('subset-GlyphWorld-Mountain.woff2') format('woff2'),
+        url('subset-GlyphWorld-Mountain.woff') format('woff'),
+        url('subset-GlyphWorld-Mountain.ttf') format('truetype'),
+        url('subset-GlyphWorld-Mountain.svg#GlyphWorld-Mountain') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GlyphWorld Flower';
+    src: url('subset-GlyphWorld-Flower.eot');
+    src: url('subset-GlyphWorld-Flower.eot?#iefix') format('embedded-opentype'),
+        url('subset-GlyphWorld-Flower.woff2') format('woff2'),
+        url('subset-GlyphWorld-Flower.woff') format('woff'),
+        url('subset-GlyphWorld-Flower.ttf') format('truetype'),
+        url('subset-GlyphWorld-Flower.svg#GlyphWorld-Flower') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GlyphWorld Animal Soul';
+    src: url('subset-GlyphWorld-AnimalSoul.eot');
+    src: url('subset-GlyphWorld-AnimalSoul.eot?#iefix') format('embedded-opentype'),
+        url('subset-GlyphWorld-AnimalSoul.woff2') format('woff2'),
+        url('subset-GlyphWorld-AnimalSoul.woff') format('woff'),
+        url('subset-GlyphWorld-AnimalSoul.ttf') format('truetype'),
+        url('subset-GlyphWorld-AnimalSoul.svg#GlyphWorld-AnimalSoul') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GlyphWorld Forest';
+    src: url('subset-GlyphWorld-Forest.eot');
+    src: url('subset-GlyphWorld-Forest.eot?#iefix') format('embedded-opentype'),
+        url('subset-GlyphWorld-Forest.woff2') format('woff2'),
+        url('subset-GlyphWorld-Forest.woff') format('woff'),
+        url('subset-GlyphWorld-Forest.ttf') format('truetype'),
+        url('subset-GlyphWorld-Forest.svg#GlyphWorld-Forest') format('svg');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GlyphWorld Desert';
+    src: url('subset-GlyphWorld-Desert.eot');
+    src: url('subset-GlyphWorld-Desert.eot?#iefix') format('embedded-opentype'),
+        url('subset-GlyphWorld-Desert.woff2') format('woff2'),
+        url('subset-GlyphWorld-Desert.woff') format('woff'),
+        url('subset-GlyphWorld-Desert.ttf') format('truetype'),
+        url('subset-GlyphWorld-Desert.svg#GlyphWorld-Desert') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GlyphWorld Glacier';
+    src: url('subset-GlyphWorld-Glacier.eot');
+    src: url('subset-GlyphWorld-Glacier.eot?#iefix') format('embedded-opentype'),
+        url('subset-GlyphWorld-Glacier.woff2') format('woff2'),
+        url('subset-GlyphWorld-Glacier.woff') format('woff'),
+        url('subset-GlyphWorld-Glacier.ttf') format('truetype'),
+        url('subset-GlyphWorld-Glacier.svg#GlyphWorld-Glacier') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GlyphWorld Meadow';
+    src: url('subset-GlyphWorld-Meadow.eot');
+    src: url('subset-GlyphWorld-Meadow.eot?#iefix') format('embedded-opentype'),
+        url('subset-GlyphWorld-Meadow.woff2') format('woff2'),
+        url('subset-GlyphWorld-Meadow.woff') format('woff'),
+        url('subset-GlyphWorld-Meadow.ttf') format('truetype'),
+        url('subset-GlyphWorld-Meadow.svg#GlyphWorld-Meadow') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+

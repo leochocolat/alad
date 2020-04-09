@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Lausanne';
+    src: url('subset-Lausanne-Regular.eot');
+    src: url('subset-Lausanne-Regular.eot?#iefix') format('embedded-opentype'),
+        url('subset-Lausanne-Regular.woff2') format('woff2'),
+        url('subset-Lausanne-Regular.woff') format('woff'),
+        url('subset-Lausanne-Regular.ttf') format('truetype'),
+        url('subset-Lausanne-Regular.svg#Lausanne-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

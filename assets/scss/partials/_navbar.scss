@@ -1,0 +1,27 @@
+.navbar {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+
+    height: 0px;
+    width: calc(100% - 40px);
+
+    margin: auto;
+}
+
+.navbar__brand {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.navbar__nav {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.navbar__button {
+    margin-left: 40px;
+}
