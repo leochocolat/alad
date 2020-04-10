@@ -13,7 +13,7 @@ class ResizeManager extends EventDispatcher {
             '_resizeHandler'
         );
 
-        // this._setup();
+        this._setup();
     }   
 
     _setup() {

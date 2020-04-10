@@ -7,6 +7,7 @@ import * as THREE from 'three';
 import { gsap } from 'gsap';
 
 //modules
+import ThreeImagesGrid from '../modules/ThreeImagesGrid';
 import ThreeImage from '../modules/ThreeImage';
 
 const PESPECTIVE = 800;
@@ -42,6 +43,7 @@ class ThreeSceneComponent {
     //private
     _setup() {
         this._setupThreeScene();
+        this._setupImagesGrid();
         this._resize();
     }
 
@@ -60,6 +62,16 @@ class ThreeSceneComponent {
         
         this._renderer.setSize(window.innerWidth, window.innerHeight);
         this._renderer.setPixelRatio(window.devicePixelRatio);
+    }
+
+    _setupImagesGrid() {
+        let grid = new ThreeImagesGrid({
+            width: this._width,
+            height: this._height,
+            scene: this._scene
+        });
+
+        this.sceneEntities.imageGrid = grid;
     }
 
     _resize() {
