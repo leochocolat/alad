@@ -22,7 +22,6 @@
           order: '-sys.createdAt'
         })
       ]).then(([posts]) => {
-        console.log(posts)
         return {
           posts: posts.items
         }

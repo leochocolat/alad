@@ -1,4 +1,5 @@
 import DeviceUtils from '~/assets/javascript/utils/DeviceUtils';
+import MediaQueriesUtils from '~/assets/javascript/utils/MediaQueriesUtils';
 import Emitter from '~/assets/javascript/events/Emitter';
 import ResizeManager from '~/assets/javascript/managers/ResizeManager';
 import ScrollManager from '~/assets/javascript/managers/ScrollManager';
@@ -6,9 +7,15 @@ ScrollManager.enableSmooth();
 
 export default ({ store }) => {
     function setup() {
-        store.dispatch('device/isModule', DeviceUtils.isMobile());    
+        store.dispatch('device/isMobile', DeviceUtils.isMobile());    
         store.dispatch('device/isTactile', DeviceUtils.isTouch());
-        
+
+        store.dispatch('device/setSize', {
+            width: window.innerWidth,
+            height: window.innerHeight,
+            breakpoint: ''
+        });
+
         setupEventListener();
     }
 
@@ -26,6 +33,12 @@ export default ({ store }) => {
 
     function resizeEndHandler(e) {
         Emitter.emit('RESIZE:END', e);
+
+        store.dispatch('device/setSize', {
+            width: e.viewportWidth,
+            height: e.viewportWidth,
+            breakpoint: ''
+        });
     }
 
     function scrollHandler(e) {
