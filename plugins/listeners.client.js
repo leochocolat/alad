@@ -1,5 +1,4 @@
 import DeviceUtils from '~/assets/javascript/utils/DeviceUtils';
-import MediaQueriesUtils from '~/assets/javascript/utils/MediaQueriesUtils';
 import Emitter from '~/assets/javascript/events/Emitter';
 import ResizeManager from '~/assets/javascript/managers/ResizeManager';
 import ScrollManager from '~/assets/javascript/managers/ScrollManager';

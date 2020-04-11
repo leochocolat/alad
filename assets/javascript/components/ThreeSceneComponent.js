@@ -1,3 +1,6 @@
+//events
+import Emitter from '../events/Emitter';
+
 //utils
 import bindAll from '../utils/bindAll';
 import normalize from '../utils/normalize';
@@ -8,7 +11,6 @@ import { gsap } from 'gsap';
 
 //modules
 import ThreeImagesGrid from '../modules/ThreeImagesGrid';
-import ThreeImage from '../modules/ThreeImage';
 
 const PESPECTIVE = 800;
 
@@ -20,7 +22,8 @@ class ThreeSceneComponent {
             this,
             '_resizeHandler',
             '_tickHandler',
-            '_mousemoveHandler'
+            '_mousemoveHandler',
+            '_loadedHandler'
         );
 
         this.sceneEntities = {};
@@ -94,6 +97,9 @@ class ThreeSceneComponent {
         window.addEventListener('resize', this._resizeHandler);
         window.addEventListener('mousemove', this._mousemoveHandler);
         gsap.ticker.add(this._tickHandler);
+
+        Emitter.on('LOADING:PROGRESS', this._loadProgressHandler, { passive: true });
+        Emitter.on('LOADING:DONE', this._loadedHandler, { passive: true });
     }
 
     _removeEventListeners() {
@@ -107,6 +113,14 @@ class ThreeSceneComponent {
 
     _tickHandler() {
         this._tick();
+    }
+
+    _loadedHandler(e) {
+        console.log('three', e);
+    }
+
+    _loadProgressHandler(e) {
+        console.log('three', e.progress);
     }
 
     _mousemoveHandler(e) {

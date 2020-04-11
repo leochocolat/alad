@@ -1,0 +1,27 @@
+.page-about {
+
+}
+
+.page-about__container {
+    height: calc(100vh - 20px);
+
+    box-sizing: border-box;
+    padding-top: 50px;
+}
+
+.page-about__heading {
+    width: 100%;
+    max-width: 1200px;
+
+    font-size: rem(120px);
+    line-height: rem(120px);
+}
+
+.page-about__infos {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    text-align: right;
+    font-size: rem(19px);
+}

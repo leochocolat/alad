@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Navbar />
     <ThreeScene />
     <nuxt/>
+    <Navbar />
   </div>
 </template>
 
@@ -21,11 +21,15 @@ export default {
   },
   computed: {
     ...mapGetters({
-      viewport: ['device/viewportSize']
-    })
+      viewport: ['device/viewportSize'],
+      photos: ['gallery/photos'],
+    }),
+  },
+  methods: {
+    
   },
   mounted() {
-    console.log(this.viewport);
+    
   }
 }
 </script>
