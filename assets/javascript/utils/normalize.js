@@ -1,6 +1,8 @@
-export default function normalizePosition(position, width, height) {
-    let x = (position.x / width) * 2 - 1;
-    let y = - (position.y / height) * 2 + 1;
+import * as THREE from 'three';
 
-    return { x: x, y: y };
+export default function normalizePosition(vector, width, height) {
+    let x = (vector.x / width) * 2 - 1;
+    let y = - (vector.y / height) * 2 + 1;
+
+    return new THREE.Vector3(x, y, vector.z);
 }

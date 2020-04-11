@@ -26,11 +26,14 @@
         photo.tag = this.posts[i].fields.tag;
         photo.model = this.posts[i].fields.model;
         photo.url = this.posts[i].fields.photo.fields.file.url;
+        photo.width = this.posts[i].fields.photo.fields.file.details.image.width;
+        photo.height = this.posts[i].fields.photo.fields.file.details.image.height;
+        
         photos.push(photo);
       }
 
       this.$store.dispatch('gallery/setPhotos', photos);
-      
+
       TexturesLoader(photos)
     },
     computed: {

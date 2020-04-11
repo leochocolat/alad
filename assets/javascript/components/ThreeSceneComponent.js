@@ -7,6 +7,7 @@ import normalize from '../utils/normalize';
 
 //vendor
 import * as THREE from 'three';
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { gsap } from 'gsap';
 
 //modules
@@ -23,7 +24,8 @@ class ThreeSceneComponent {
             '_resizeHandler',
             '_tickHandler',
             '_mousemoveHandler',
-            '_loadedHandler'
+            '_loadedHandler',
+            '_clickHandler'
         );
 
         this.sceneEntities = {};
@@ -46,7 +48,6 @@ class ThreeSceneComponent {
     //private
     _setup() {
         this._setupThreeScene();
-        this._setupImagesGrid();
         this._resize();
     }
 
@@ -57,6 +58,8 @@ class ThreeSceneComponent {
         this._camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 1, 1000);
         this._camera.position.set(0, 0, PESPECTIVE);
 
+        this._raycaster = new THREE.Raycaster();
+
         this._renderer = new THREE.WebGLRenderer({
             canvas: this.el,
             alpha: true,
@@ -65,21 +68,36 @@ class ThreeSceneComponent {
         
         this._renderer.setSize(window.innerWidth, window.innerHeight);
         this._renderer.setPixelRatio(window.devicePixelRatio);
+
+        // this._controls = new OrbitControls(this._camera, this._renderer.domElement);
     }
 
-    _setupImagesGrid() {
+    _setupImagesGrid(images) {
         let grid = new ThreeImagesGrid({
             width: this._width,
             height: this._height,
-            scene: this._scene
+            scene: this._scene,
+            images: images
         });
 
         this.sceneEntities.imageGrid = grid;
     }
 
+    _raycast() {
+        this._raycaster.setFromCamera(this._normalizedMouse, this._camera);
+        let intersects = this._raycaster.intersectObjects(this._scene.children);
+
+        this._currentMouseTarget = intersects[0];
+    }
+
     _resize() {
         this._width = window.innerWidth;
         this._height = window.innerHeight;
+
+        for (let i in this.sceneEntities) {
+            if (!this.sceneEntities[i].resize) continue;
+            this.sceneEntities[i].resize();
+        }
 
         this._renderer.setSize(this._width, this._height);
         this._renderer.setPixelRatio(window.devicePixelRatio);
@@ -90,20 +108,27 @@ class ThreeSceneComponent {
     }
 
     _tick() {
+        for (let i in this.sceneEntities) {
+            if (!this.sceneEntities[i].update) continue;
+            this.sceneEntities[i].update();
+        }
+
         this._renderer.render(this._scene, this._camera);
     }
 
     _setupEventListeners() {
         window.addEventListener('resize', this._resizeHandler);
         window.addEventListener('mousemove', this._mousemoveHandler);
+        window.addEventListener('click', this._clickHandler);
         gsap.ticker.add(this._tickHandler);
 
-        Emitter.on('LOADING:PROGRESS', this._loadProgressHandler, { passive: true });
         Emitter.on('LOADING:DONE', this._loadedHandler, { passive: true });
     }
 
     _removeEventListeners() {
         window.removeEventListener('resize', this._resizeHandler);
+        window.removeEventListener('mousemove', this._mousemoveHandler);
+        window.removeEventListener('click', this._clickHandler);
         gsap.ticker.remove(this._tickHandler);
     }
 
@@ -116,22 +141,26 @@ class ThreeSceneComponent {
     }
 
     _loadedHandler(e) {
-        console.log('three', e);
-    }
-
-    _loadProgressHandler(e) {
-        console.log('three', e.progress);
+        const images = e.images;
+        this._setupImagesGrid(images);
     }
 
     _mousemoveHandler(e) {
         const mousePosition = { x: e.clientX, y: e.clientY };
-        const normalizePosition = normalize(mousePosition, this._width, this._height);
 
         this._mouse.x = mousePosition.x;
         this._mouse.y = mousePosition.y;
 
-        this._normalizedMouse.x = normalizePosition.x;
-        this._normalizedMouse.y = normalizePosition.y;
+        this._normalizedMouse = normalize(this._mouse, this._width, this._height);
+
+        this._raycast();
+    }
+
+    _clickHandler() {
+        if (!this._currentMouseTarget) return;
+
+        const title = this._currentMouseTarget.object.title;
+        const tag = this._currentMouseTarget.object.tag;
     }
 }
 
