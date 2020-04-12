@@ -1,11 +1,10 @@
 import ThreeImage from './ThreeImage';
 import Emitter from '../events/Emitter';
 import bindAll from '../utils/bindAll';
-import normalize from '../utils/normalize';
+import SimplexNoise from 'simplex-noise';
+const simplex = new SimplexNoise(); 
 
-import * as THREE from 'three';
-
-const WIDTH = 500;
+const WIDTH = 200;
 
 class ThreeImagesGrid {
     constructor(options) {
@@ -43,19 +42,39 @@ class ThreeImagesGrid {
 
     //private
     _setup() {
+        this._setupContainerSize();
         this._setupPosition();
         this._createImages();
         this._setupEventListeners();
     }
 
+    _setupContainerSize() {
+        const amount = this.images.length;
+        const concentration = 10;
+        let factor = amount/concentration;
+
+        this._container = {
+            width: this._width * factor,
+            height: this._height * factor,
+        }
+
+        console.log(this._container.width)
+    }
+
     _setupPosition() {
         this._positions = [];
 
-        const padding = 50;
+        const PADDING = 500;
 
-        for (let i = 0; i < this.images.length; i++) {
-            const x = (WIDTH + padding) * i;
-            const y = 0;
+        const limit = this.images.length;
+        // const limit = 1;
+        for (let i = 0; i < limit; i++) {
+            const lastPos = this._positions[i - 1] ? this._positions[i - 1] : { x: 0, y: 0 };
+            const randomX = simplex.noise2D(i * 10, lastPos.x);
+            const randomY = simplex.noise2D(i * 10, lastPos.y);
+            console.log(randomX, randomY);
+            const x = randomX * (this._container.width - PADDING);
+            const y = randomY * (this._container.height - PADDING);
             const z = 0;
             
             let vector = new THREE.Vector3();
@@ -68,7 +87,9 @@ class ThreeImagesGrid {
     _createImages() {
         this._threeImages = [];
 
-        for (let i = 0; i < this._positions.length; i++) {
+        const limit = this._positions.length;
+        // const limit = 1;
+        for (let i = 0; i < limit; i++) {
             const width = WIDTH;
             const height = this.images[i].height / this.images[i].width * width;
 

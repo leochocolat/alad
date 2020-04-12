@@ -1,0 +1,34 @@
+[
+    {
+        "name" : "AirLand",
+        "url" : "fonts/subset/bmfont/subset-GlyphWorld-AirLand"
+    },
+    {
+        "name" : "AnimalSoul",
+        "url" : "fonts/subset/bmfont/subset-GlyphWorld-AnimalSoul"
+    },
+    {
+        "name" : "Desert",
+        "url" : "fonts/subset/bmfont/subset-GlyphWorld-Desert"
+    },
+    {
+        "name" : "Flower",
+        "url" : "fonts/subset/bmfont/subset-GlyphWorld-Flower"
+    },
+    {
+        "name" : "Glacier",
+        "url" : "fonts/subset/bmfont/subset-GlyphWorld-Glacier"
+    },
+    {
+        "name" : "Meadow",
+        "url" : "fonts/subset/bmfont/subset-GlyphWorld-Meadow"
+    },
+    {
+        "name" : "Mountain",
+        "url" : "fonts/subset/bmfont/subset-GlyphWorld-Mountain"
+    },
+    {
+        "name" : "WasteLand",
+        "url" : "fonts/subset/bmfont/subset-GlyphWorld-WasteLand"
+    }
+]

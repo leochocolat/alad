@@ -1,3 +1,5 @@
+import fonts from '~/assets/data/fonts';
+
 //events
 import Emitter from '../events/Emitter';
 
@@ -6,12 +8,13 @@ import bindAll from '../utils/bindAll';
 import normalize from '../utils/normalize';
 
 //vendor
-import * as THREE from 'three';
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { gsap } from 'gsap';
 
 //modules
+import fontsLoader from '../modules/fontsLoader';
 import ThreeImagesGrid from '../modules/ThreeImagesGrid';
+import ThreeTitle from '../modules/ThreeTitle';
 
 const PESPECTIVE = 800;
 
@@ -25,7 +28,8 @@ class ThreeSceneComponent {
             '_tickHandler',
             '_mousemoveHandler',
             '_loadedHandler',
-            '_clickHandler'
+            '_clickHandler',
+            '_fontLoadedHandler'
         );
 
         this.sceneEntities = {};
@@ -48,6 +52,7 @@ class ThreeSceneComponent {
     //private
     _setup() {
         this._setupThreeScene();
+        this._loadFonts();
         this._resize();
     }
 
@@ -72,6 +77,10 @@ class ThreeSceneComponent {
         // this._controls = new OrbitControls(this._camera, this._renderer.domElement);
     }
 
+    _loadFonts() {
+        fontsLoader(fonts).then(this._fontLoadedHandler);
+    }
+
     _setupImagesGrid(images) {
         let grid = new ThreeImagesGrid({
             width: this._width,
@@ -81,6 +90,21 @@ class ThreeSceneComponent {
         });
 
         this.sceneEntities.imageGrid = grid;
+    }
+
+    _setupThreeText() {
+        let randomIndex = Math.floor(Math.random() * this._fonts.length);
+
+        let threeText = new ThreeTitle({
+            font: this._fonts[randomIndex],
+            content: '',
+            color: new THREE.Color(0x000000),
+            scene: this._scene,
+            width: this._width,
+            height: this._height
+        });
+
+        this.sceneEntities.threeText = threeText;
     }
 
     _raycast() {
@@ -159,8 +183,18 @@ class ThreeSceneComponent {
     _clickHandler() {
         if (!this._currentMouseTarget) return;
 
-        const title = this._currentMouseTarget.object.title;
+        const title = this._currentMouseTarget.object.name;
         const tag = this._currentMouseTarget.object.tag;
+
+        let randomIndex = Math.floor(Math.random() * this._fonts.length);
+
+        this.sceneEntities.threeText.setContent(title);
+        this.sceneEntities.threeText.setFont(this._fonts[randomIndex]);
+    }
+
+    _fontLoadedHandler(fonts) {
+        this._fonts = fonts;
+        this._setupThreeText();
     }
 }
 

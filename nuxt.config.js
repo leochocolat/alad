@@ -1,4 +1,5 @@
 const config = require('./.contentful.json');
+const webpack = require('webpack');
 
 module.exports = {
   head: {
@@ -26,7 +27,7 @@ module.exports = {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '~/plugins/listeners.client'
+    '~/plugins/listeners.client',
   ],
   /*
   ** Build configuration
@@ -35,6 +36,11 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
+    plugins: [
+      new webpack.ProvidePlugin({
+        THREE: 'three'
+      }),
+    ],
     extend(config, ctx) {
       config.module.rules.push({
         test: /\.(glsl|vs|fs)$/,
